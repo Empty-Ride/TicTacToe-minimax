@@ -8,7 +8,7 @@ class Graphics:
         self.cross_marker = cross_marker
         self.circle_marker = circle_marker
         pygame.font.init()
-        self.font = pygame.font.Font(None, self.cellsize)
+        self.font = pygame.font.Font(None, self.cellsize//2)
 
         #colors
         self.BG_COLOR = (255, 255, 255)
@@ -45,11 +45,15 @@ class Graphics:
             end_pos = (int(end_col*self.cellsize + self.cellsize/2), int(end_row*self.cellsize + self.cellsize/2))
 
             pygame.draw.line(self.screen, (0,255,0), start_pos, end_pos, 15)
+            
 
     def draw_message(self, message):
         self.screen.fill(self.BG_COLOR)
         text = self.font.render(message, True, (0, 0, 0))
         self.screen.blit(text, (self.width // 2 - text.get_width() // 2, self.height // 2 - text.get_height() // 2))
+    
+
+            
 
     def draw_markers(self, board):
         for i in range(9):
